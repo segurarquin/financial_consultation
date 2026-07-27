@@ -26,19 +26,22 @@ export default function Navbar() {
             <div className="w-9 h-9 rounded-lg bg-primary-500 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <i className="ri-line-chart-line text-background-50 text-lg"></i>
             </div>
-            <span className="text-lg font-semibold text-foreground-900 font-heading tracking-tight whitespace-nowrap">
-              FinConsult
+            <span className={`text-lg font-semibold font-heading tracking-tight whitespace-nowrap transition-colors duration-200 ${scrolled ? 'text-foreground-900' : 'text-background-50'}`}>
+              ConFinEx
             </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#servicios" className="text-sm font-medium text-foreground-700 hover:text-primary-600 transition-colors duration-200 whitespace-nowrap">
+            <Link to="/" className={`text-sm font-medium transition-colors duration-200 whitespace-nowrap ${scrolled ? 'text-foreground-700 hover:text-primary-600' : 'text-background-50 hover:text-background-50/80'}`}>
+              Home
+            </Link>
+            <a href="#servicios" className={`text-sm font-medium transition-colors duration-200 whitespace-nowrap ${scrolled ? 'text-foreground-700 hover:text-primary-600' : 'text-background-50 hover:text-background-50/80'}`}>
               Servicios
             </a>
-            <a href="#como-funciona" className="text-sm font-medium text-foreground-700 hover:text-primary-600 transition-colors duration-200 whitespace-nowrap">
+            <a href="#como-funciona" className={`text-sm font-medium transition-colors duration-200 whitespace-nowrap ${scrolled ? 'text-foreground-700 hover:text-primary-600' : 'text-background-50 hover:text-background-50/80'}`}>
               Cómo Funciona
             </a>
-            <a href="#analistas" className="text-sm font-medium text-foreground-700 hover:text-primary-600 transition-colors duration-200 whitespace-nowrap">
+            <a href="#analistas" className={`text-sm font-medium transition-colors duration-200 whitespace-nowrap ${scrolled ? 'text-foreground-700 hover:text-primary-600' : 'text-background-50 hover:text-background-50/80'}`}>
               Analistas
             </a>
             <Link
@@ -47,6 +50,13 @@ export default function Navbar() {
             >
               <i className="ri-calendar-check-line text-base"></i>
               Reservar Cita
+            </Link>
+            <Link
+              to="/admin"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap cursor-pointer ${scrolled ? 'border border-background-200/70 text-foreground-700 hover:bg-background-100' : 'bg-background-50 text-foreground-800 hover:bg-background-50/90'}`}
+            >
+              <i className="ri-dashboard-line text-base"></i>
+              Admin
             </Link>
           </div>
 

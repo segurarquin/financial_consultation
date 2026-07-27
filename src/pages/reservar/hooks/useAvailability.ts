@@ -42,7 +42,7 @@ export function useAvailability(analystId: string | null, date: string | null) {
         .select('appointment_time')
         .eq('analyst_id', analystId)
         .eq('appointment_date', date)
-        .neq('status', 'Cancelled');
+        .neq('status', 'cancelled');
 
       if (apptError) throw apptError;
 
@@ -109,7 +109,7 @@ export function useAvailability(analystId: string | null, date: string | null) {
           const newAppointment = payload.new as { appointment_date: string; appointment_time: string; status: string };
           if (
             newAppointment.appointment_date === date &&
-            newAppointment.status !== 'Cancelled'
+            newAppointment.status !== 'cancelled'
           ) {
             const bookedTime = newAppointment.appointment_time.substring(0, 5);
             setSlots((prev) => prev.filter((slot) => slot.time !== bookedTime));

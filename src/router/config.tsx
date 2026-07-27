@@ -4,6 +4,8 @@ import Home from "../pages/home/page";
 import Reservar from "../pages/reservar/page";
 import Admin from "../pages/admin/page";
 import AdminCalendario from "../pages/admin/calendario/page";
+import AdminLogin from "../pages/admin/login/page";
+import AuthGuard from "../pages/admin/components/AuthGuard";
 
 const routes: RouteObject[] = [
   {
@@ -15,12 +17,16 @@ const routes: RouteObject[] = [
     element: <Reservar />,
   },
   {
+    path: "/admin/login",
+    element: <AdminLogin />,
+  },
+  {
     path: "/admin",
-    element: <Admin />,
+    element: <AuthGuard><Admin /></AuthGuard>,
   },
   {
     path: "/admin/calendario",
-    element: <AdminCalendario />,
+    element: <AuthGuard><AdminCalendario /></AuthGuard>,
   },
   {
     path: "*",

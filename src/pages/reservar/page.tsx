@@ -177,7 +177,7 @@ export default function Reservar() {
         .eq('analyst_id', selectedAnalyst!.id)
         .eq('appointment_date', selectedDate!)
         .eq('appointment_time', `${selectedTime!}:00`)
-        .neq('status', 'Cancelled');
+        .neq('status', 'cancelled');
 
       if (checkError) throw checkError;
       if (count && count > 0) {
@@ -203,7 +203,7 @@ export default function Reservar() {
           client_id: clientData.id,
           appointment_date: selectedDate!,
           appointment_time: `${selectedTime!}:00`,
-          status: 'Pending',
+          status: 'pending',
           comments: formData.comments.trim() || null,
         });
 
@@ -223,17 +223,17 @@ export default function Reservar() {
       <>
         <Navbar />
         <main className="min-h-screen pt-20 pb-10 px-6 flex items-center justify-center bg-background-50">
-          <div className="max-w-lg w-full text-center">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
+          <div className="max-w-lg w-full text-center animate-slide-up">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center animate-pop-in" style={{ animationDelay: '0.2s' }}>
               <i className="ri-check-line text-3xl text-green-600"></i>
             </div>
-            <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground-950 mb-3">
+            <h1 className="text-2xl md:text-3xl font-heading font-bold text-foreground-950 mb-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               ¡Cita Reservada!
             </h1>
-            <p className="text-foreground-600 mb-2">
+            <p className="text-foreground-600 mb-2 animate-fade-in-up" style={{ animationDelay: '0.35s' }}>
               Tu cita con <strong>{selectedAnalyst?.name}</strong> ha sido agendada.
             </p>
-            <p className="text-sm text-foreground-500 mb-8">
+            <p className="text-sm text-foreground-500 mb-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               {selectedDate && (
                 <>
                   {new Date(selectedDate + 'T00:00:00').toLocaleDateString('es-MX', {
@@ -321,11 +321,12 @@ export default function Reservar() {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
-                  {analysts.map((analyst) => (
+                  {analysts.map((analyst, idx) => (
                     <button
                       key={analyst.id}
                       onClick={() => handleSelectAnalyst(analyst)}
-                      className="p-6 rounded-xl bg-background-100 border-2 border-background-200/70 hover:border-primary-400 hover:bg-primary-50/50 transition-all duration-300 text-left group cursor-pointer"
+                      className="p-6 rounded-xl bg-background-100 border-2 border-background-200/70 hover:border-primary-400 hover:bg-primary-50/50 transition-all duration-300 text-left group cursor-pointer animate-fade-in-up"
+                      style={{ animationDelay: `${idx * 0.1}s` }}
                     >
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center group-hover:bg-primary-500 transition-colors duration-300 flex-shrink-0">
@@ -372,7 +373,7 @@ export default function Reservar() {
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 max-w-xl mx-auto">
-                {weekdays.map((d) => {
+                {weekdays.map((d, idx) => {
                   const isSelected = selectedDate === d.value;
                   const dateObj = new Date(d.value + 'T00:00:00');
                   const dayNum = dateObj.getDate();
@@ -381,11 +382,12 @@ export default function Reservar() {
                     <button
                       key={d.value}
                       onClick={() => handleSelectDate(d.value)}
-                      className={`flex flex-col items-center gap-1 px-4 py-3.5 rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap ${
+                      className={`flex flex-col items-center gap-1 px-4 py-3.5 rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap animate-fade-in-up ${
                         isSelected
                           ? 'bg-primary-500 text-background-50 dark:text-foreground-950 shadow-lg shadow-primary-500/20 scale-105'
                           : 'bg-background-100 text-foreground-700 hover:bg-primary-100 hover:text-primary-700 border border-background-200/70'
                       }`}
+                      style={{ animationDelay: `${idx * 0.04}s` }}
                     >
                       <span className="text-xs font-medium opacity-70">
                         {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'][dateObj.getDay()]}

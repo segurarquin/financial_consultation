@@ -13,7 +13,7 @@ export default function Footer() {
                 <i className="ri-line-chart-line text-background-50 text-lg"></i>
               </div>
               <span className="text-lg font-semibold text-background-50 font-heading tracking-tight whitespace-nowrap">
-                FinConsult
+                ConFinEx
               </span>
             </div>
             <p className="text-sm leading-relaxed text-background-50/60">
@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-background-50/10 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-7xl mx-auto">
           <p className="text-xs text-background-50/40">
-            &copy; {currentYear} FinConsult. Todos los derechos reservados.
+            &copy; {currentYear} ConFinEx. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-5">
             <a href="#" className="text-xs text-background-50/40 hover:text-background-50/70 transition-colors duration-200 whitespace-nowrap" rel="nofollow">
